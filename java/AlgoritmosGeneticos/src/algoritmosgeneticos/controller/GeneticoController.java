@@ -13,9 +13,7 @@ import java.util.List;
  * @author Manuel
  */
 public class GeneticoController {
-    /*cantidad de ejecuciones*/
 
-    private Integer times;
     /*factor genetico*/
     private Float factor;
     /*numero de elementos*/
@@ -27,17 +25,16 @@ public class GeneticoController {
     /*
      * constructor
      */
-
+    
     public GeneticoController() {
-        init();
-        ejecute();
+        
+        
     }
 
-    private void init() {
-        number = 6;
+    public  void init(int number) {
+        this.number=number;
         table = new ArrayList<Row>();
         generateVal();
-        times=8;
     }
     
     /*
@@ -53,22 +50,7 @@ public class GeneticoController {
         }
     }
     
-    /*
-     * Algoritmo Genetico
-     */
-    private void ejecute(){
-        System.out.println(average());
-        drawTable();
-        while(times>0){
-            pairRandom();
-            selection();
-            pairRandom();
-            cross();
-            System.out.println(average());
-            drawTable();
-            times--;
-        }
-    }
+    
     
     
     /*
@@ -187,5 +169,20 @@ public class GeneticoController {
             
             System.out.println(row.toString());
         }
+    }
+    /*
+     * Copia de la tabla
+     */
+    public List<Row> copyTable(){
+        List<Row> r= new ArrayList<Row>();
+        for (Row row : table) {
+            int id=row.getId();
+            Row aux=new Row(id,new ArrayList<Integer>());
+            for(int i:row.getCode()){
+                aux.addElement(i);
+            }
+            r.add(aux);
+        }
+        return r;
     }
 }

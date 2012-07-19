@@ -10,6 +10,6 @@ import algoritmosgeneticos.controller.GeneticoController;
 public class AlgoritmosGeneticos {
 
     public static void main(String[] args) {
-        GeneticoController gc=new GeneticoController();
+        //GeneticoController gc=new GeneticoController();
     }
 }
